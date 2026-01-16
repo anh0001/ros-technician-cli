@@ -1,29 +1,27 @@
 # ROS Technician LLM
 
-A Large Language Model designed specifically for ROS (Robot Operating System) technicians. This project aims to create an intelligent assistant that understands ROS architecture, debugging workflows, and robotics maintenance tasks.
+A Large Language Model designed specifically for ROS 2 (Robot Operating System 2) technicians. This project aims to create an intelligent assistant that understands ROS 2 architecture, debugging workflows, and robotics maintenance tasks.
 
 ## Overview
 
 ROS Technician LLM is built to assist robotics engineers and technicians with:
 
-- **Diagnostics & Troubleshooting** - Analyze ROS logs, identify node failures, and suggest fixes
-- **System Configuration** - Help configure ROS parameters, launch files, and network setups
-- **Code Understanding** - Explain ROS packages, message types, and service definitions
-- **Best Practices** - Provide guidance on ROS development patterns and conventions
-- **Real-time Assistance** - Interact with live ROS systems to inspect topics, services, and nodes
+- **Diagnostics & Troubleshooting** - Analyze ROS 2 logs, identify node failures, and suggest fixes
+- **System Configuration** - Help configure ROS 2 parameters, launch files, and network setups
+- **Code Understanding** - Explain ROS 2 packages, message types, and service definitions
+- **Best Practices** - Provide guidance on ROS 2 development patterns and conventions
+- **Real-time Assistance** - Interact with live ROS 2 systems to inspect topics, services, and nodes
 
 ## Features
 
-- Natural language interface for ROS commands
+- Natural language interface for ROS 2 commands
 - Context-aware responses based on your robot's configuration
-- Support for both ROS 1 and ROS 2
 - Integration with common robotics tools and simulators
 
 ## Getting Started
 
 ```bash
-# Clone the repository
-git clone https://github.com/your-org/ros-technician-cli.git
+# Clone the repository and 
 cd ros-technician-cli
 
 # Install dependencies
@@ -36,8 +34,8 @@ python main.py
 ## Requirements
 
 - Python 3.9+
-- ROS Noetic / ROS 2 Humble or later
-- Active ROS environment
+- ROS 2 Humble or later
+- Active ROS 2 environment
 
 ## License
 
