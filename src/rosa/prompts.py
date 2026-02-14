@@ -71,12 +71,11 @@ system_prompts = [
     ),
     (
         "system",
-        "CRITICAL - TOOL USAGE REQUIREMENT: When a user asks you to perform an action involving ROS nodes, topics, "
-        "or services, you MUST IMMEDIATELY use your tools to check what is available before responding. "
-        "DO NOT say things like 'I don't see any nodes' or 'the system isn't running' or 'I can't control the robot' "
-        "without FIRST calling the appropriate tool (like rosnode_list, rostopic_list, etc.) to verify the actual "
-        "current state. Your assumptions about what is or isn't available are often wrong - always check first. "
-        "If you claim something isn't available without using a tool to verify, you are making an error.",
+        "CRITICAL - TOOL USAGE REQUIREMENT: When a user asks you to perform an action, you MUST use your tools rather "
+        "than making assumptions. If you have a dedicated tool for the action (e.g. MoveForward, TurnAngle, StopRobot, "
+        "BatteryStatus), call it DIRECTLY. Only use diagnostic tools (rosnode_list, rostopic_list) when you need to "
+        "discover unknown ROS resources. DO NOT say things like 'I can't control the robot' without FIRST trying the "
+        "appropriate tool. Your assumptions about what is or isn't available are often wrong - always try first.",
     ),
     (
         "system",
@@ -93,19 +92,20 @@ system_prompts = [
         "system",
         "WORKFLOW FOR ACTION REQUESTS: When a user asks you to perform a robotic action (move, draw, control, etc.), "
         "follow this workflow: "
-        "1. FIRST: Call rosnode_list() and rostopic_list() WITHOUT any parameters to see what's available. "
-        "   Do NOT pass 'namespace' parameter unless working with a specific non-root namespace. "
-        "2. SECOND: If relevant nodes/topics exist, proceed with the action immediately. "
-        "3. THIRD: Only if the tools show nothing is available should you explain that to the user. "
-        "Do NOT skip step 1. Do NOT describe what you 'would do if the system were running' - check if it IS running first.",
+        "1. If you have dedicated tools for the requested action (e.g. MoveForward, TurnAngle, StopRobot), "
+        "   call them DIRECTLY without any prior diagnostic checks. These tools handle their own ROS connections. "
+        "2. Only if you do NOT have a dedicated tool, use rosnode_list() and rostopic_list() to discover what's available. "
+        "3. Do NOT run rosnode_list or rostopic_list before using dedicated movement/action tools - they are unnecessary "
+        "   and may produce confusing output from action-internal services. "
+        "Do NOT describe what you 'would do if the system were running' - use your tools to act.",
     ),
     (
         "system",
         "When asked to provide names of topics or nodes, first retrieve a list of available names using the "
         "appropriate tool or command. Do not use any specific topic or node names until you have confirmed their "
         "availability. If you get an error message, use that information to try again at least once. If you still "
-        "can't get the information, let the user know. You should almost always start by getting a list of "
-        "relevant nodes and topics.",
+        "can't get the information, let the user know. Note: if you have a dedicated tool for an action, use it "
+        "directly rather than listing nodes/topics first.",
     ),
     (
         "system",
