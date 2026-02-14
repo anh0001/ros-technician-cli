@@ -92,8 +92,9 @@ class ROSATools:
         return self.__tools
 
     def __add_tool(self, tool):
-        if hasattr(tool, "name") and hasattr(tool, "func"):
-            if self.__blacklist and "blacklist" in tool.func.__code__.co_varnames:
+        # Accept both LangChain Tool (has .func) and BaseTool subclasses (has ._run)
+        if hasattr(tool, "name") and (hasattr(tool, "func") or hasattr(tool, "_run")):
+            if hasattr(tool, "func") and self.__blacklist and "blacklist" in tool.func.__code__.co_varnames:
                 # Inject the blacklist into the tool function
                 tool.func = inject_blacklist(self.__blacklist)(tool.func)
             self.__tools.append(tool)
